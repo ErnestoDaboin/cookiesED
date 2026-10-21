@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FFF5F7">
+  <meta name="description"
+    content="Cookies ED — Galletas artesanales estilo Nueva York: gourmet y rellenas. Pide por WhatsApp.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Cookies ED">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- Favicon: galleta con trozos de chocolate (SVG embebido, sin archivos extra) -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23C98B5E'/%3E%3Ccircle cx='50' cy='50' r='41' fill='%23E3B07C'/%3E%3Ccircle cx='33' cy='34' r='8' fill='%233E2723'/%3E%3Ccircle cx='63' cy='29' r='7' fill='%233E2723'/%3E%3Ccircle cx='68' cy='58' r='9' fill='%233E2723'/%3E%3Ccircle cx='37' cy='64' r='7' fill='%233E2723'/%3E%3Ccircle cx='50' cy='47' r='6' fill='%233E2723'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23C98B5E'/%3E%3Ccircle cx='50' cy='50' r='41' fill='%23E3B07C'/%3E%3Ccircle cx='33' cy='34' r='8' fill='%233E2723'/%3E%3Ccircle cx='63' cy='29' r='7' fill='%233E2723'/%3E%3Ccircle cx='68' cy='58' r='9' fill='%233E2723'/%3E%3Ccircle cx='37' cy='64' r='7' fill='%233E2723'/%3E%3Ccircle cx='50' cy='47' r='6' fill='%233E2723'/%3E%3C/svg%3E">
+
+  <title>Cookies ED · Galletas Artesanales Estilo Nueva York</title>
+
+  <!-- ============================ TAILWIND (CDN) ============================ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FFF5F7',
+            blush: '#FDF2F8',
+            choco: {
+              DEFAULT: '#3E2723',
+              800: '#3E2723',
+              700: '#4E342E',
+              600: '#5D4037',
+              500: '#795548',
+              300: '#A1887F'
+            },
+            brand: {
+              50: '#FFF1F6',
+              100: '#FFE4EF',
+              200: '#FBCFE8',
+              300: '#F9A8D4',
+              400: '#F472B6',
+              500: '#EC4899',
+              600: '#DB2777',
+              700: '#BE185D'
+            }
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 10px 30px -12px rgba(244, 114, 182, 0.45)',
+            'soft-lg': '0 24px 60px -24px rgba(190, 24, 93, 0.45)',
+            card: '0 8px 24px -14px rgba(62, 39, 35, 0.35)'
+          },
+          borderRadius: {
+            '4xl': '2rem'
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(14px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            pop: {
+              '0%': { transform: 'scale(.85)' },
+              '60%': { transform: 'scale(1.08)' },
+              '100%': { transform: 'scale(1)' }
+            },
+            float: {
+              '0%,100%': { transform: 'translateY(0) rotate(-2deg)' },
+              '50%': { transform: 'translateY(-12px) rotate(2deg)' }
+            }
+          },
+          animation: {
+            fadeUp: 'fadeUp .5s cubic-bezier(.22,1,.36,1) both',
+            pop: 'pop .28s ease-out',
+            float: 'float 6s ease-in-out infinite'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- ============================ FUENTES ============================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- ============================ ICONOS (LUCIDE) ============================ -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- ============================ SWEETALERT2 ============================ -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: #FFF5F7;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #FBCFE8;
+      color: #3E2723;
+    }
+
+    /* Scrollbar de la página */
+    ::-webkit-scrollbar {
+      width: 11px;
+      height: 11px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #FDF2F8;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #FBCFE8;
+      border-radius: 999px;
+      border: 3px solid #FDF2F8;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #F472B6;
+    }
+
+    /* Patrón de puntos "cookie" para fondos decorativos */
+    .dots-pattern {
+      background-image: radial-gradient(rgba(236, 72, 153, .16) 1.6px, transparent 1.6px);
+      background-size: 22px 22px;
+    }
+
+    /* Cinta móvil (marquee) */
+    .marquee-track {
+      animation: marquee 30s linear infinite;
+    }
+
+    .marquee-wrap:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Vidrio (glassmorphism) */
+    .glass {
+      background: rgba(255, 255, 255, .72);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      backdrop-filter: blur(16px) saturate(140%);
+    }
+
+    /* Brillo que recorre el botón de WhatsApp */
+    .shine {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shine::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -140%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent, rgba(255, 255, 255, .45), transparent);
+      transform: skewX(-18deg);
+      animation: shine 3.4s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+
+      0%,
+      65% {
+        left: -140%;
+      }
+
+      100% {
+        left: 160%;
+      }
+    }
+
+    /* Tarjeta: borde degradado que se revela al hacer hover */
+    .card-ring {
+      position: relative;
+    }
+
+    .card-ring::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: linear-gradient(135deg, #F472B6, #FBCFE8, #EC4899);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity .35s ease;
+      pointer-events: none;
+    }
+
+    .card-ring:hover::before {
+      opacity: 1;
+    }
+
+    /* Indicador deslizante de las pestañas */
+    #tabIndicator {
+      position: absolute;
+      top: .35rem;
+      bottom: .35rem;
+      left: 0;
+      width: 0;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #F472B6, #EC4899);
+      box-shadow: 0 10px 24px -12px rgba(236, 72, 153, .95);
+      opacity: 0;
+      transition: transform .35s cubic-bezier(.22, 1, .36, 1), width .35s cubic-bezier(.22, 1, .36, 1), opacity .25s ease;
+      pointer-events: none;
+    }
+
+    .tab-btn[aria-selected="true"] span[data-count] {
+      background: rgba(255, 255, 255, .28) !important;
+      color: #fff !important;
+    }
+
+    /* Sello "Favorita" */
+    .ribbon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #F472B6, #EC4899);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      box-shadow: 0 10px 20px -10px rgba(236, 72, 153, .95);
+    }
+
+    /* Scrollbar del drawer */
+    #cartDrawer.dragging {
+      transition: none !important;
+    }
+
+    .pretty-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .pretty-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .pretty-scroll::-webkit-scrollbar-thumb {
+      background: #FBCFE8;
+      border-radius: 999px;
+    }
+
+    .pretty-scroll::-webkit-scrollbar-thumb:hover {
+      background: #F9A8D4;
+    }
+
+    /* Textos con degradado rosa animado */
+    .text-gradient-brand {
+      background-image: linear-gradient(100deg, #EC4899, #F472B6 35%, #DB2777 65%, #EC4899);
+      background-size: 220% 220%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientShift 7s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    /* Toast de SweetAlert2 con estética pastel */
+    .cookie-toast {
+      border-radius: 1.25rem !important;
+      background: #ffffff !important;
+      border: 1px solid #FBCFE8 !important;
+      box-shadow: 0 18px 40px -18px rgba(236, 72, 153, .55) !important;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+    }
+
+    .cookie-toast .swal2-title {
+      font-family: 'Fraunces', serif !important;
+      color: #3E2723 !important;
+      font-weight: 700 !important;
+      font-size: .95rem !important;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .cookie-toast .swal2-icon {
+      border-width: 0 !important;
+      margin: 0 .6rem 0 .4rem !important;
+    }
+
+    .cookie-toast .swal2-icon-success {
+      color: #EC4899 !important;
+    }
+
+    .cookie-toast .swal2-icon-error {
+      color: #DB2777 !important;
+    }
+
+    .cookie-toast .swal2-progress-bar {
+      background: #F472B6 !important;
+    }
+
+    /* Popups de SweetAlert2 */
+    .swal-popup {
+      border-radius: 1.75rem !important;
+      border: 1px solid #FBCFE8 !important;
+      box-shadow: 0 30px 70px -30px rgba(190, 24, 93, .5) !important;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      color: #3E2723 !important;
+      padding: 1.75rem !important;
+    }
+
+    .swal-title {
+      font-family: 'Fraunces', serif !important;
+      color: #3E2723 !important;
+      font-weight: 800 !important;
+    }
+
+    .swal-text,
+    .swal-html-container {
+      color: #5D4037 !important;
+      font-size: .95rem !important;
+    }
+
+    .swal-confirm {
+      background: linear-gradient(135deg, #F472B6, #EC4899) !important;
+      color: #fff !important;
+      border-radius: 999px !important;
+      font-weight: 700 !important;
+      padding: .7rem 1.6rem !important;
+      box-shadow: 0 12px 26px -12px rgba(236, 72, 153, .9) !important;
+    }
+
+    .swal-cancel {
+      background: #FFF1F6 !important;
+      color: #BE185D !important;
+      border-radius: 999px !important;
+      font-weight: 700 !important;
+      padding: .7rem 1.4rem !important;
+    }
+
+    .swal-input,
+    .swal-select {
+      border-radius: 1rem !important;
+      border: 1px solid #FBCFE8 !important;
+      background: #FDF2F8 !important;
+      color: #3E2723 !important;
+      padding: .8rem 1rem !important;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+    }
+
+    .swal-input:focus,
+    .swal-select:focus {
+      border-color: #F472B6 !important;
+      box-shadow: 0 0 0 4px rgba(244, 114, 182, .25) !important;
+      outline: none !important;
+    }
+
+    /* Botón de cantidad */
+    .qty-btn {
+      display: grid;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      background: #fff;
+      color: #DB2777;
+      font-weight: 800;
+      transition: transform .15s ease, background .15s ease, color .15s ease;
+    }
+
+    .qty-btn:hover {
+      background: #EC4899;
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .qty-btn:active {
+      transform: scale(.92);
+    }
+
+    .qty-btn:disabled {
+      opacity: .4;
+      pointer-events: none;
+    }
+
+    /* Inputs del mini formulario */
+    .field {
+      width: 100%;
+      border-radius: 1rem;
+      border: 1px solid #FBCFE8;
+      background: #fff;
+      padding: .8rem 1rem;
+      font-size: 1rem;
+      /* 16px: evita el zoom automático de iOS */
+      line-height: 1.4;
+      color: #3E2723;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+
+    @media (min-width: 640px) {
+      .field {
+        font-size: .925rem;
+        padding: .7rem .9rem;
+      }
+    }
+
+    .field::placeholder {
+      color: #A1887F;
+    }
+
+    .field:focus {
+      outline: none;
+      border-color: #F472B6;
+      box-shadow: 0 0 0 4px rgba(244, 114, 182, .22);
+    }
+
+    .field-label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #BE185D;
+      margin-bottom: .35rem;
+    }
+
+    /* Focus visible accesible */
+    :focus-visible {
+      outline: 3px solid #F472B6;
+      outline-offset: 2px;
+      border-radius: .75rem;
+    }
+
+    /* Barra inferior: safe-area en iOS */
+    .pb-safe {
+      padding-bottom: calc(.85rem + env(safe-area-inset-bottom));
+    }
+
+    .pb-safe-2 {
+      padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        transition-duration: .001ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans bg-cream text-choco antialiased selection:bg-brand-200">
+
+  <!-- Utilidades reservadas: garantizan que Tailwind (CDN) genere estas clases
+     aunque el contenido se pinte dinámicamente desde JavaScript -->
+  <div aria-hidden="true" class="pointer-events-none fixed left-0 top-0 -z-50 h-0 w-0 overflow-hidden opacity-0">
+    <span
+      class="animate-fadeUp animate-pop animate-float shadow-card shadow-soft shadow-soft-lg ring-1 ring-brand-100 ring-brand-200 ring-brand-300 ring-brand-400 hover:ring-brand-300"></span>
+    <span
+      class="bg-brand-50 bg-brand-100 bg-brand-200 bg-brand-300 bg-brand-400 bg-brand-500 bg-brand-600 bg-brand-700 text-brand-500 text-brand-600 text-brand-700 border-brand-100 border-brand-200 border-brand-300 border-brand-400 from-brand-400 from-brand-300 to-brand-600 to-brand-500"></span>
+    <span class="font-display tabular-nums min-w-6 aspect-square object-cover line-through decoration-brand-400"></span>
+    <span class="text-[10px] text-[11px] text-[12px] text-[13px] text-[14px] tracking-widest"></span>
+    <span class="hover:-translate-y-0.5 hover:shadow-lg hover:scale-105 active:scale-95"></span>
+  </div>
+
+  <!-- ============================ BANNER SUPERIOR ============================ -->
+  <div class="relative z-40 bg-choco text-cream">
+    <div
+      class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-1 px-4 py-2 text-center text-[11px] font-semibold uppercase tracking-[.12em] sm:text-xs">
+      <!-- <span class="flex items-center gap-1.5"><i data-lucide="truck" class="h-3.5 w-3.5 text-brand-300"></i> Delivery a
+        todo el país</span> -->
+      <!-- <span class="hidden h-3 w-px bg-white/25 sm:block"></span> -->
+      <span class="flex items-center gap-1.5"><i data-lucide="cookie" class="h-3.5 w-3.5 text-brand-300"></i> 2x $5.00
+        en <span class="text-brand-200">Línea Clásica</span></span>
+      <span class="hidden h-3 w-px bg-white/25 sm:block"></span>
+      <span class="flex items-center gap-1.5"><i data-lucide="sparkles" class="h-3.5 w-3.5 text-brand-300"></i> 2x $6.00
+        en <span class="text-brand-200">Línea Especial</span></span>
+    </div>
+  </div>
+
+  <!-- ============================ HEADER ============================ -->
+  <header id="siteHeader"
+    class="sticky top-0 z-40 border-b border-brand-100 bg-cream/85 backdrop-blur-xl transition-shadow duration-300">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4">
+      <a href="#top" class="flex min-w-0 items-center gap-2.5">
+        <span
+          class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-brand-300 to-brand-500 text-xl shadow-soft transition-transform duration-300 hover:rotate-12">🍪</span>
+        <span class="truncate font-display text-xl font-black tracking-tight">Cookies<span
+            class="text-brand-500">ED</span></span>
+      </a>
+
+      <nav class="hidden items-center gap-7 text-sm font-semibold text-choco/70 md:flex">
+        <a href="#catalogo" class="transition hover:text-brand-600">Catálogo</a>
+        <a href="#promos" class="transition hover:text-brand-600">Promociones</a>
+        <a href="#pasos" class="transition hover:text-brand-600">Cómo pedir</a>
+        <a href="https://wa.me/584164204146" target="_blank" rel="noopener"
+          class="transition hover:text-brand-600">Contacto</a>
+      </nav>
+
+      <button id="btnCartDesktop" type="button"
+        class="group relative flex shrink-0 items-center gap-2 rounded-full bg-white px-3 py-2 text-sm font-bold text-choco shadow-card ring-1 ring-brand-100 transition hover:ring-brand-300 active:scale-95 sm:px-4"
+        aria-label="Abrir carrito de compras">
+        <i data-lucide="shopping-bag" class="h-5 w-5 text-brand-500 transition group-hover:scale-110"></i>
+        <span class="hidden sm:inline">Carrito</span>
+        <span id="badgeDesktop"
+          class="grid h-6 min-w-6 place-items-center rounded-full bg-brand-500 px-1.5 text-xs font-extrabold text-white transition-transform">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============================ HERO ============================ -->
+    <section class="relative overflow-hidden">
+      <div aria-hidden="true"
+        class="pointer-events-none absolute -left-24 top-10 h-72 w-72 animate-pulse rounded-full bg-brand-200/50 blur-3xl">
+      </div>
+      <div aria-hidden="true"
+        class="pointer-events-none absolute -right-24 top-32 h-80 w-80 animate-pulse rounded-full bg-brand-100/70 blur-3xl [animation-delay:1.2s]">
+      </div>
+      <div aria-hidden="true"
+        class="pointer-events-none absolute inset-0 dots-pattern opacity-60 [mask-image:radial-gradient(ellipse_at_top,black,transparent_72%)]">
+      </div>
+
+      <!-- Galletas decorativas flotantes -->
+      <span aria-hidden="true"
+        class="pointer-events-none absolute left-[6%] top-28 hidden text-4xl opacity-70 animate-float lg:block">🍪</span>
+      <span aria-hidden="true"
+        class="pointer-events-none absolute right-[8%] top-24 hidden text-3xl opacity-60 animate-float lg:block [animation-delay:1.6s]">🍪</span>
+      <span aria-hidden="true"
+        class="pointer-events-none absolute bottom-16 left-[42%] hidden text-2xl opacity-50 animate-float xl:block [animation-delay:.8s]">🍪</span>
+
+      <div
+        class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-12 pt-10 lg:grid-cols-2 lg:gap-14 lg:pb-16 lg:pt-14">
+        <div class="animate-fadeUp">
+          <span
+            class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[.14em] text-brand-600 shadow-soft ring-1 ring-brand-100">
+            <i data-lucide="star" class="h-3.5 w-3.5 fill-brand-400 text-brand-400"></i> Estilo Nueva York · Hechas a
+            mano
+          </span>
+
+          <h1 class="mt-5 font-display text-[2.6rem] font-black leading-[1.03] tracking-tight sm:text-6xl">
+            Galletas <span class="text-gradient-brand">gourmet</span>,<br class="hidden sm:block">
+            <span class="italic text-brand-600">rellenas</span> y estilo NY
+          </h1>
+
+          <p class="mt-5 max-w-lg text-[15px] leading-relaxed text-choco/70 sm:text-base">
+            Recetas de pastelería boutique: masa de vainilla Belgian chunky, chocolate fundido
+            y rellenos generosos. Elige tu favorita y activa el combo <strong class="text-choco">2x</strong>
+            automáticamente.
+          </p>
+
+          <div class="mt-7 flex flex-wrap items-center gap-3">
+            <a href="#catalogo"
+              class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-400 to-brand-600 px-7 py-3.5 text-sm font-extrabold text-white shadow-soft-lg transition hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0">
+              <i data-lucide="shopping-bag" class="h-4 w-4"></i> Ver catálogo
+            </a>
+            <a href="https://wa.me/584164204146" target="_blank" rel="noopener"
+              class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-extrabold text-choco shadow-card ring-1 ring-brand-200 transition hover:-translate-y-0.5 hover:ring-brand-400">
+              <i data-lucide="message-circle" class="h-4 w-4 text-brand-500"></i> Pedir por WhatsApp
+            </a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <div class="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-card ring-1 ring-brand-100">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-500">
+                <i data-lucide="badge-percent" class="h-5 w-5"></i>
+              </span>
+              <div>
+                <p class="font-display text-sm font-bold leading-tight">2x $5.00</p>
+                <p class="text-xs text-choco/60">Línea Clásica</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-card ring-1 ring-brand-100">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-500">
+                <i data-lucide="crown" class="h-5 w-5"></i>
+              </span>
+              <div>
+                <p class="font-display text-sm font-bold leading-tight">2x $6.00</p>
+                <p class="text-xs text-choco/60">Línea Especial</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust row -->
+          <ul class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] font-semibold text-choco/60">
+            <li class="flex items-center gap-1.5"><i data-lucide="star"
+                class="h-4 w-4 fill-brand-400 text-brand-400"></i> 4.9/5 · +500 pedidos</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="truck" class="h-4 w-4 text-brand-500"></i> Entrega en
+              24h</li>
+            <li class="flex items-center gap-1.5"><i data-lucide="shield-check" class="h-4 w-4 text-brand-500"></i> Pago
+              seguro · Binance</li>
+          </ul>
+        </div>
+
+        <!-- Collage del hero -->
+        <div class="relative mx-auto w-full max-w-md lg:max-w-none animate-fadeUp" style="animation-delay:.12s">
+          <div class="relative overflow-hidden rounded-4xl shadow-soft-lg ring-1 ring-brand-100">
+            <img id="heroImg" src="images/all2.jpeg" alt="Colección de galletas artesanales Cookies ED"
+              class="aspect-[4/3] w-full object-cover transition duration-700 hover:scale-105" loading="lazy">
+          </div>
+
+          <div
+            class="absolute -bottom-5 -left-3 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-soft-lg ring-1 ring-brand-100 animate-float sm:-left-6">
+            <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-500 text-lg">🎁</span>
+            <div>
+              <p class="font-display text-sm font-bold leading-tight">Ahorra al instante</p>
+              <p class="text-xs text-choco/60">Promo 2x automática</p>
+            </div>
+          </div>
+
+          <div class="absolute -right-2 -top-4 rounded-2xl bg-choco px-4 py-3 text-cream shadow-soft-lg sm:-right-5">
+            <p class="text-[10px] font-bold uppercase tracking-[.14em] text-brand-300">Rellenas</p>
+            <p class="font-display text-lg font-black leading-tight">7 sabores</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CINTA DE PROMOCIONES ============================ -->
+    <div class="marquee-wrap relative overflow-hidden border-y border-brand-100 bg-white/70 py-3">
+      <div
+        class="marquee-track flex w-max items-center gap-8 whitespace-nowrap pr-8 text-[11px] font-extrabold uppercase tracking-[.18em] text-brand-600 sm:text-xs">
+        <span class="flex items-center gap-2"><i data-lucide="sparkles" class="h-4 w-4"></i> 2x $5.00 en Clásicas</span>
+        <span class="text-brand-300">✦</span>
+        <span class="flex items-center gap-2"><i data-lucide="sparkles" class="h-4 w-4"></i> 2x $6.00 en
+          Especiales</span>
+        <span class="text-brand-300">✦</span>
+        <!-- <span class="flex items-center gap-2"><i data-lucide="truck" class="h-4 w-4"></i> Delivery a todo el país</span> -->
+        <span class="text-brand-300">✦</span>
+        <span class="flex items-center gap-2"><i data-lucide="cookie" class="h-4 w-4"></i> Hechas a mano cada día</span>
+        <span class="text-brand-300">✦</span>
+        <span class="flex items-center gap-2"><i data-lucide="credit-card" class="h-4 w-4"></i> Binance · Zinli · Pago
+          Móvil</span>
+        <span class="text-brand-300">✦</span>
+        <span class="flex items-center gap-2"><i data-lucide="sparkles" class="h-4 w-4"></i> 2x $5.00 en Clásicas</span>
+        <span class="text-brand-300">✦</span>
+        <span class="flex items-center gap-2"><i data-lucide="sparkles" class="h-4 w-4"></i> 2x $6.00 en
+          Especiales</span>
+        <span class="text-brand-300">✦</span>
+        <!-- <span class="flex items-center gap-2"><i data-lucide="truck" class="h-4 w-4"></i> Delivery a todo el país</span> -->
+        <span class="text-brand-300">✦</span>
+        <span class="flex items-center gap-2"><i data-lucide="cookie" class="h-4 w-4"></i> Hechas a mano cada día</span>
+        <span class="text-brand-300">✦</span>
+        <span class="flex items-center gap-2"><i data-lucide="credit-card" class="h-4 w-4"></i> Binance · Zinli · Pago
+          Móvil</span>
+        <span class="text-brand-300">✦</span>
+      </div>
+    </div>
+
+    <!-- ============================ PROMOS ============================ -->
+    <section id="promos" class="mx-auto max-w-7xl scroll-mt-24 px-4 pb-4">
+      <div class="grid gap-5 sm:grid-cols-2">
+        <article
+          class="group overflow-hidden rounded-3xl bg-white shadow-card ring-1 ring-brand-100 transition duration-300 hover:-translate-y-1 hover:shadow-soft hover:ring-brand-300">
+          <div class="relative h-32 overflow-hidden sm:h-36">
+            <img src="images/1%20en%203%24%20y%202%20por%205%24.jpeg" alt="Promoción 1 en 3 dólares y 2 por 5 dólares"
+              class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-r from-choco/80 via-choco/45 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center gap-3 px-5">
+              <span
+                class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white/95 text-brand-600 shadow-soft">
+                <i data-lucide="cookie" class="h-5 w-5"></i>
+              </span>
+              <div class="min-w-0 text-white">
+                <h3 class="font-display text-lg font-black leading-tight drop-shadow">Línea Clásica</h3>
+                <p class="text-xs font-bold text-white/85">1 x $3.00 · <span class="text-brand-200">2 x $5.00</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-sm leading-relaxed text-choco/65">Choco Chips, Oreo Chips, Choco Arequipe, Cookie Monster y
+              Red Velvet. Combina pares de cualquier sabor de esta línea.</p>
+            <div class="mt-3.5 flex flex-wrap gap-1.5">
+              <span
+                class="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-extrabold text-brand-600"><i
+                  data-lucide="badge-percent" class="h-3.5 w-3.5"></i> Ahorra $1.00 por par</span>
+              <span
+                class="inline-flex items-center gap-1 rounded-full bg-cream px-2.5 py-1 text-[11px] font-bold text-choco/55 ring-1 ring-brand-100">5
+                sabores</span>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="group overflow-hidden rounded-3xl bg-white shadow-card ring-1 ring-brand-100 transition duration-300 hover:-translate-y-1 hover:shadow-soft hover:ring-brand-300">
+          <div class="relative h-32 overflow-hidden sm:h-36">
+            <img src="images/1%20en%203.5%24%20y%202%20por%206%24.jpeg"
+              alt="Promoción 1 en 3.50 dólares y 2 por 6 dólares"
+              class="h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-r from-choco/80 via-choco/45 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center gap-3 px-5">
+              <span
+                class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white/95 text-brand-600 shadow-soft">
+                <i data-lucide="crown" class="h-5 w-5"></i>
+              </span>
+              <div class="min-w-0 text-white">
+                <h3 class="font-display text-lg font-black leading-tight drop-shadow">Línea Especial</h3>
+                <p class="text-xs font-bold text-white/85">1 x $3.50 · <span class="text-brand-200">2 x $6.00</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-sm leading-relaxed text-choco/65">Cheesecake Cookie y Prestigio Cookie: rellenos generosos de
+              la casa, horneados estilo Nueva York.</p>
+            <div class="mt-3.5 flex flex-wrap gap-1.5">
+              <span
+                class="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-extrabold text-brand-600"><i
+                  data-lucide="badge-percent" class="h-3.5 w-3.5"></i> Ahorra $1.00 por par</span>
+              <span
+                class="inline-flex items-center gap-1 rounded-full bg-cream px-2.5 py-1 text-[11px] font-bold text-choco/55 ring-1 ring-brand-100">Rellenas</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================ CATÁLOGO ============================ -->
+    <section id="catalogo" class="mx-auto max-w-7xl scroll-mt-24 px-4 pb-32 pt-10 lg:pb-24">
+      <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-[11px] font-bold uppercase tracking-[.18em] text-brand-500">Nuestro menú</p>
+          <h2 class="mt-2 font-display text-3xl font-black tracking-tight sm:text-4xl">Elige tu galleta</h2>
+          <p class="mt-2 max-w-md text-sm text-choco/65">Todas nuestras galletas son <strong>rellenas y estilo
+              NY</strong>. La promo 2x se aplica sola en el carrito.</p>
+        </div>
+
+        <!-- Tabs de filtro -->
+        <div id="filters" role="tablist" aria-label="Filtrar catálogo por categoría"
+          class="relative flex w-full gap-1.5 overflow-x-auto rounded-full bg-white p-1.5 shadow-card ring-1 ring-brand-100 sm:w-auto">
+          <span id="tabIndicator" aria-hidden="true"></span>
+          <button type="button" role="tab" data-filter="all"
+            class="tab-btn relative z-10 flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition">
+            Todas <span data-count="all"
+              class="rounded-full bg-brand-50 px-1.5 text-[11px] font-extrabold text-brand-600">0</span>
+          </button>
+          <button type="button" role="tab" data-filter="especial"
+            class="tab-btn relative z-10 flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition">
+            <i data-lucide="sparkles" class="h-4 w-4"></i> Especiales <span data-count="especial"
+              class="rounded-full bg-brand-50 px-1.5 text-[11px] font-extrabold text-brand-600">0</span>
+          </button>
+          <button type="button" role="tab" data-filter="clasica"
+            class="tab-btn relative z-10 flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition">
+            <i data-lucide="heart" class="h-4 w-4"></i> Clásicas <span data-count="clasica"
+              class="rounded-full bg-brand-50 px-1.5 text-[11px] font-extrabold text-brand-600">0</span>
+          </button>
+        </div>
+      </div>
+
+      <div id="grid" class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <!-- ============================ CÓMO PEDIR ============================ -->
+    <section id="pasos" class="mx-auto max-w-7xl scroll-mt-24 px-4 pb-6 pt-6">
+      <div class="mb-7 text-center">
+        <p class="text-[11px] font-bold uppercase tracking-[.18em] text-brand-500">Así de fácil</p>
+        <h2 class="mt-2 font-display text-3xl font-black tracking-tight sm:text-4xl">Cómo pedir</h2>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-3">
+        <article
+          class="group relative overflow-hidden rounded-3xl bg-white p-6 shadow-card ring-1 ring-brand-100 transition hover:-translate-y-1 hover:shadow-soft hover:ring-brand-300">
+          <span
+            class="absolute -right-3 -top-5 font-display text-7xl font-black text-brand-50 transition group-hover:text-brand-100">01</span>
+          <span
+            class="relative grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-soft">
+            <i data-lucide="cookie" class="h-6 w-6"></i>
+          </span>
+          <h3 class="relative mt-4 font-display text-lg font-black">Elige tus galletas</h3>
+          <p class="relative mt-1.5 text-sm leading-relaxed text-choco/65">Agrega las que quieras con un toque. Puedes
+            mixes sabores de la misma línea.</p>
+        </article>
+
+        <article
+          class="group relative overflow-hidden rounded-3xl bg-white p-6 shadow-card ring-1 ring-brand-100 transition hover:-translate-y-1 hover:shadow-soft hover:ring-brand-300">
+          <span
+            class="absolute -right-3 -top-5 font-display text-7xl font-black text-brand-50 transition group-hover:text-brand-100">02</span>
+          <span
+            class="relative grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-soft">
+            <i data-lucide="badge-percent" class="h-6 w-6"></i>
+          </span>
+          <h3 class="relative mt-4 font-display text-lg font-black">Activa tu promo 2x</h3>
+          <p class="relative mt-1.5 text-sm leading-relaxed text-choco/65">El descuento se calcula solo: cada par de la
+            misma línea baja su precio automáticamente.</p>
+        </article>
+
+        <article
+          class="group relative overflow-hidden rounded-3xl bg-white p-6 shadow-card ring-1 ring-brand-100 transition hover:-translate-y-1 hover:shadow-soft hover:ring-brand-300">
+          <span
+            class="absolute -right-3 -top-5 font-display text-7xl font-black text-brand-50 transition group-hover:text-brand-100">03</span>
+          <span
+            class="relative grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-soft">
+            <i data-lucide="message-circle" class="h-6 w-6"></i>
+          </span>
+          <h3 class="relative mt-4 font-display text-lg font-black">Recibe por WhatsApp</h3>
+          <p class="relative mt-1.5 text-sm leading-relaxed text-choco/65">Te enviamos el resumen del pedido con el
+            total y coordinamos la entrega o el pickup.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================ GALERÍA ============================ -->
+    <section class="mx-auto max-w-7xl px-4 pb-28 pt-6 lg:pb-20">
+      <div class="mb-5 flex items-end justify-between gap-4">
+        <div>
+          <p class="text-[11px] font-bold uppercase tracking-[.18em] text-brand-500">Del horno a tu mesa</p>
+          <h2 class="mt-2 font-display text-2xl font-black tracking-tight sm:text-3xl">Galería de Cookies ED</h2>
+        </div>
+        <span class="hidden shrink-0 items-center gap-1.5 text-xs font-bold text-choco/45 sm:flex">
+          Desliza <i data-lucide="move-horizontal" class="h-4 w-4"></i>
+        </span>
+      </div>
+
+      <div
+        class="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <figure
+          class="group relative w-[72vw] max-w-xs shrink-0 snap-start overflow-hidden rounded-3xl shadow-card ring-1 ring-brand-100 sm:w-72">
+          <img src="images/all.jpeg" alt="Todas las galletas de Cookies ED" loading="lazy"
+            class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105">
+          <figcaption
+            class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-choco/85 to-transparent p-4 pt-10 text-sm font-extrabold text-white">
+            Nuestro catálogo completo</figcaption>
+        </figure>
+        <figure
+          class="group relative w-[72vw] max-w-xs shrink-0 snap-start overflow-hidden rounded-3xl shadow-card ring-1 ring-brand-100 sm:w-72">
+          <img src="images/empaque.jpeg" alt="Empaque de las galletas" loading="lazy"
+            class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105">
+          <figcaption
+            class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-choco/85 to-transparent p-4 pt-10 text-sm font-extrabold text-white">
+            Empaque listo para regalar</figcaption>
+        </figure>
+        <figure
+          class="group relative w-[72vw] max-w-xs shrink-0 snap-start overflow-hidden rounded-3xl shadow-card ring-1 ring-brand-100 sm:w-72">
+          <img src="images/oreo-empaque.jpeg" alt="Oreo Chips en su empaque" loading="lazy"
+            class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105">
+          <figcaption
+            class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-choco/85 to-transparent p-4 pt-10 text-sm font-extrabold text-white">
+            Oreo Chips</figcaption>
+        </figure>
+        <figure
+          class="group relative w-[72vw] max-w-xs shrink-0 snap-start overflow-hidden rounded-3xl shadow-card ring-1 ring-brand-100 sm:w-72">
+          <img src="images/redvelvet-picada2.jpeg" alt="Red Velvet porcionada" loading="lazy"
+            class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105">
+          <figcaption
+            class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-choco/85 to-transparent p-4 pt-10 text-sm font-extrabold text-white">
+            Red Velvet recién horneada</figcaption>
+        </figure>
+        <figure
+          class="group relative w-[72vw] max-w-xs shrink-0 snap-start overflow-hidden rounded-3xl shadow-card ring-1 ring-brand-100 sm:w-72">
+          <img src="images/all2.jpeg" alt="Colección de galletas Cookies ED" loading="lazy"
+            class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105">
+          <figcaption
+            class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-choco/85 to-transparent p-4 pt-10 text-sm font-extrabold text-white">
+            Colección Cookies ED</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="border-t border-brand-100 bg-white/70">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="flex items-center gap-2.5">
+          <span
+            class="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-brand-300 to-brand-500 text-xl shadow-soft">🍪</span>
+          <span class="font-display text-xl font-black">Cookies<span class="text-brand-500">ED</span></span>
+        </div>
+        <p class="mt-3 max-w-xs text-sm leading-relaxed text-choco/60">Galletas artesanales estilo Nueva York: gourmet y
+          rellenas. Horneadas cada día con ingredientes premium.</p>
+        <div class="mt-4 flex gap-2">
+          <a href="https://wa.me/584164204146" target="_blank" rel="noopener" aria-label="WhatsApp"
+            class="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-600 transition hover:bg-brand-500 hover:text-white"><i
+              data-lucide="message-circle" class="h-[18px] w-[18px]"></i></a>
+          <a href="#catalogo" aria-label="Catálogo"
+            class="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-600 transition hover:bg-brand-500 hover:text-white"><i
+              data-lucide="cookie" class="h-[18px] w-[18px]"></i></a>
+          <a href="https://wa.me/584164204146" target="_blank" rel="noopener" aria-label="Delivery"
+            class="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-600 transition hover:bg-brand-500 hover:text-white"><i
+              data-lucide="truck" class="h-[18px] w-[18px]"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-display text-sm font-bold uppercase tracking-widest text-brand-600">Promociones</h4>
+        <ul class="mt-3 space-y-2 text-sm text-choco/70">
+          <li>Línea Clásica · 1 x $3.00 · <strong class="text-brand-600">2 x $5.00</strong></li>
+          <li>Línea Especial · 1 x $3.50 · <strong class="text-brand-600">2 x $6.00</strong></li>
+          <li>Combos de pares entre sabores de la misma línea</li>
+          <li>El descuento se aplica automático en el carrito</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display text-sm font-bold uppercase tracking-widest text-brand-600">Pedidos</h4>
+        <ul class="mt-3 space-y-2 text-sm text-choco/70">
+          <li><a class="inline-flex items-center gap-2 transition hover:text-brand-600"
+              href="https://wa.me/584164204146" target="_blank" rel="noopener"><i data-lucide="message-circle"
+                class="h-4 w-4 text-brand-500"></i> +58 416 420 4146</a></li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="h-4 w-4 text-brand-500"></i> Pickup &amp;
+            Delivery</li>
+          <li class="flex items-center gap-2"><i data-lucide="clock" class="h-4 w-4 text-brand-500"></i> Lun a Vie · 9am
+            - 8pm</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display text-sm font-bold uppercase tracking-widest text-brand-600">Métodos de pago</h4>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span
+            class="inline-flex items-center gap-1.5 rounded-xl bg-cream px-2.5 py-1.5 text-xs font-bold text-choco/70 ring-1 ring-brand-100"><i
+              data-lucide="smartphone" class="h-4 w-4 text-brand-500"></i> Pago Móvil</span>
+          <span
+            class="inline-flex items-center gap-1.5 rounded-xl bg-cream px-2.5 py-1.5 text-xs font-bold text-choco/70 ring-1 ring-brand-100"><i
+              data-lucide="banknote" class="h-4 w-4 text-brand-500"></i> Efectivo $</span>
+          <span
+            class="inline-flex items-center gap-1.5 rounded-xl bg-cream px-2.5 py-1.5 text-xs font-bold text-choco/70 ring-1 ring-brand-100"><i
+              data-lucide="zap" class="h-4 w-4 text-brand-500"></i> Zinli</span>
+          <span
+            class="inline-flex items-center gap-1.5 rounded-xl bg-cream px-2.5 py-1.5 text-xs font-bold text-choco/70 ring-1 ring-brand-100">
+            <svg viewBox="0 0 40 40" class="h-4 w-4" fill="#F0B90B" aria-hidden="true">
+              <path d="M20 2l8 6-8 6-8-6 8-6Z" />
+              <path d="M8 14l8 6-8 6-8-6 8-6Z" />
+              <path d="M32 14l8 6-8 6-8-6 8-6Z" />
+              <path d="M20 30l8 6-8 6-8-6 8-6Z" />
+              <path d="M20 15l6 5-6 5-6-5 6-5Z" />
+            </svg>
+            Binance
+          </span>
+        </div>
+        <p class="mt-3 text-xs leading-relaxed text-choco/50">Paga con USDT en Binance de forma rápida y segura. Te
+          enviamos los datos al confirmar el pedido.</p>
+      </div>
+    </div>
+    <div class="border-t border-brand-100 px-4 py-5 text-center text-xs text-choco/50">© <span id="year"></span> Cookies
+      ED · Hecho con butter y mucho cariño 🍪</div>
+  </footer>
+
+  <!-- Espaciador para que la barra flotante no tape el pie en móvil -->
+  <div class="h-24 lg:hidden" aria-hidden="true"></div>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/584164204146" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"
+    class="group fixed bottom-24 right-4 z-20 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-soft-lg ring-4 ring-white/70 transition active:scale-95 lg:bottom-6 lg:right-6 lg:h-16 lg:w-16">
+    <span class="absolute inset-0 -z-10 animate-ping rounded-full bg-[#25D366] opacity-25" aria-hidden="true"></span>
+    <i data-lucide="message-circle" class="h-7 w-7 transition group-hover:scale-110"></i>
+  </a>
+
+  <!-- ============================ FLOATING CART BAR (MÓVIL) ============================ -->
+  <div id="cartBar"
+    class="fixed inset-x-0 bottom-0 z-30 translate-y-full pb-safe transition-transform duration-300 ease-out lg:hidden">
+    <div class="px-3 pb-3">
+      <div
+        class="relative mx-auto flex max-w-lg items-center gap-2.5 overflow-hidden rounded-3xl bg-choco px-3 py-2.5 shadow-soft-lg ring-1 ring-brand-700/40">
+        <span
+          class="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-brand-300 to-transparent"
+          aria-hidden="true"></span>
+
+        <span
+          class="relative grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow">
+          <i data-lucide="shopping-bag" class="h-5 w-5"></i>
+          <span id="badgeMobile"
+            class="absolute -right-1.5 -top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-white px-1 text-[11px] font-extrabold text-brand-600">0</span>
+        </span>
+
+        <div class="min-w-0 flex-1">
+          <p id="barCount" class="truncate text-[11px] font-semibold text-brand-200">Tu carrito está vacío</p>
+          <p id="barTotal" class="font-display text-lg font-black leading-tight text-white">$0.00</p>
+        </div>
+
+        <span id="barSaving"
+          class="hidden shrink-0 items-center gap-1 rounded-full bg-emerald-400/15 px-2.5 py-1 text-[11px] font-extrabold text-emerald-300 ring-1 ring-emerald-300/30">
+          <i data-lucide="piggy-bank" class="h-3.5 w-3.5"></i> <span id="barSavingValue">$0.00</span>
+        </span>
+
+        <button id="btnCartMobile" type="button"
+          class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-r from-brand-400 to-brand-500 px-4 py-3 text-[13px] font-extrabold text-white shadow-lg transition active:scale-95">
+          Ver Carrito <i data-lucide="chevron-right" class="h-4 w-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================ DRAWER / SLIDE-OVER CARRITO ============================ -->
+  <div id="cartBackdrop"
+    class="fixed inset-0 z-40 bg-choco/45 opacity-0 pointer-events-none backdrop-blur-sm transition-opacity duration-300">
+  </div>
+
+  <aside id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de compras"
+    class="fixed inset-y-0 right-0 z-50 flex h-[100dvh] w-full max-w-md translate-x-full flex-col bg-cream shadow-2xl transition-transform duration-300 ease-out">
+
+    <!-- Header del drawer -->
+    <header class="relative shrink-0 border-b border-brand-100 bg-white px-5 pb-4 pt-3">
+      <div class="mx-auto mb-2 h-1.5 w-10 rounded-full bg-brand-200 sm:hidden" aria-hidden="true"></div>
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="grid h-10 w-10 place-items-center rounded-2xl bg-brand-50 text-brand-500">
+            <i data-lucide="shopping-bag" class="h-5 w-5"></i>
+          </span>
+          <div>
+            <h2 class="font-display text-lg font-black leading-tight">Tu pedido</h2>
+            <p id="drawerSubtitle" class="text-xs text-choco/55">0 galletas</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button id="btnClearCart" type="button"
+            class="hidden items-center gap-1.5 rounded-full px-3 py-2 text-xs font-bold text-choco/50 transition hover:bg-brand-50 hover:text-brand-600"
+            aria-label="Vaciar carrito">
+            <i data-lucide="trash-2" class="h-4 w-4"></i> Vaciar
+          </button>
+          <button id="btnCloseDrawer" type="button"
+            class="grid h-10 w-10 place-items-center rounded-full bg-cream text-choco transition hover:bg-brand-50 hover:text-brand-600"
+            aria-label="Cerrar carrito">
+            <i data-lucide="x" class="h-5 w-5"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Body: items + upsell + formulario -->
+    <div id="cartBody" class="pretty-scroll flex-1 space-y-5 overflow-y-auto overscroll-contain px-5 py-5"></div>
+
+    <!-- Footer: desglose + botón WhatsApp -->
+    <footer id="cartFooter" class="relative shrink-0 border-t border-brand-100 bg-white px-5 pt-4 pb-safe-2">
+      <div class="pointer-events-none absolute inset-x-0 -top-4 h-4 bg-gradient-to-t from-transparent to-white/80"
+        aria-hidden="true"></div>
+    </footer>
+  </aside>
+
+  <script>
+    /* ==========================================================================
+       COOKIES ED — Catálogo + Carrito con motor de promociones 2x + WhatsApp
+       ========================================================================== */
+
+    const WHATSAPP_NUMBER = '584164204146';
+    const STORAGE_KEY = 'cookiesed_cart_v1';
+
+    /* ---------- Catálogo ---------- */
+    const CATEGORIES = {
+      especial: {
+        key: 'especial',
+        label: 'Especial',
+        lineName: 'Línea Especial',
+        unit: 3.50,
+        pair: 6.00,
+        extra: 2.50,   // costo de agregar la 1ª unidad para cerrar el par
+        pairLabel: '2x $6.00',
+        promoText: 'Promo 2x Especial'
+      },
+      clasica: {
+        key: 'clasica',
+        label: 'Clásica',
+        lineName: 'Línea Clásica',
+        unit: 3.00,
+        pair: 5.00,
+        extra: 2.00,
+        pairLabel: '2x $5.00',
+        promoText: 'Promo 2x Clásica'
+      }
+    };
+
+    const PRODUCTS = [
+      {
+        id: 'cheesecake',
+        name: 'Cheesecake Cookie',
+        cat: 'especial',
+        badge: 'Rellena',
+        popular: true,
+        desc: 'Masa de vainilla Belgian chunky rellena de crema de cheesecake y mermelada de fresa.',
+        tags: ['Vainilla', 'Cheesecake', 'Fresa'],
+        img: 'images/cheesecake-picada.jpeg'
+      },
+      {
+        id: 'prestigio',
+        name: 'Prestigio Cookie',
+        cat: 'especial',
+        badge: 'NY Style',
+        desc: 'Cookie de chocolate con gotas de chocolate oscuro rellena de crema de coco.',
+        tags: ['Chocolate', 'Coco'],
+        img: 'images/prestigio-picada.jpeg'
+      },
+      {
+        id: 'chocochips',
+        name: 'Choco Chips',
+        cat: 'clasica',
+        badge: 'Rellena',
+        popular: true,
+        desc: 'La clásica de chispas: cookie con chispas de chocolate rellena de chocolate fundido.',
+        tags: ['Chocolate', 'Clásico'],
+        img: 'images/chocochips.jpeg'
+      },
+      {
+        id: 'oreochips',
+        name: 'Oreo Chips',
+        cat: 'clasica',
+        badge: 'NY Style',
+        desc: 'Cookie con trozos de galleta tipo Oreo, rellena de chocolate y topped con migas de Oreo.',
+        tags: ['Oreo', 'Chocolate'],
+        img: 'images/oreo.jpeg'
+      },
+      {
+        id: 'chocoarequipe',
+        name: 'Choco Arequipe',
+        cat: 'clasica',
+        badge: 'Rellena',
+        desc: 'Cookie de chocolate con chispas de chocolate blanco y un dulce relleno de arequipe.',
+        tags: ['Arequipe', 'Chocolate'],
+        img: 'images/chocochips2.jpeg'
+      },
+      {
+        id: 'cookiemonster',
+        name: 'Cookie Monster',
+        cat: 'clasica',
+        badge: 'NY Style',
+        popular: true,
+        desc: 'Chocolate con chispas de chocolate oscuro, relleno de chocolate y topping de chocolate.',
+        tags: ['Chocolate', 'Topping'],
+        img: 'images/cookiemonster-picada.jpeg'
+      },
+      {
+        id: 'redvelvet',
+        name: 'Red Velvet',
+        cat: 'clasica',
+        badge: 'Rellena',
+        popular: true,
+        desc: 'Terciopelo rojo con chispas de chocolate blanco y frosting de queso crema.',
+        tags: ['Red Velvet', 'Queso crema'],
+        img: 'images/redvelvet-picada.jpeg'
+      }
+    ];
+
+    const PAYMENT_METHODS = {
+      'pagomovil': 'Pago Móvil',
+      'efectivo': 'Efectivo $',
+      'zinli': 'Zinli',
+      'transferencia': 'Transferencia',
+      'binance': 'Binance (USDT)'
+    };
+
+    /* Iconos de cada método de pago (Binance usa su rombo amarillo oficial) */
+    const BINANCE_ICON = '<svg viewBox="0 0 40 40" class="h-4 w-4 shrink-0" fill="#F0B90B" aria-hidden="true"><path d="M20 2l8 6-8 6-8-6 8-6Z"/><path d="M8 14l8 6-8 6-8-6 8-6Z"/><path d="M32 14l8 6-8 6-8-6 8-6Z"/><path d="M20 30l8 6-8 6-8-6 8-6Z"/><path d="M20 15l6 5-6 5-6-5 6-5Z"/></svg>';
+
+    const PAYMENT_ICONS = {
+      'pagomovil': '<i data-lucide="smartphone" class="h-4 w-4 shrink-0"></i>',
+      'efectivo': '<i data-lucide="banknote" class="h-4 w-4 shrink-0"></i>',
+      'zinli': '<i data-lucide="zap" class="h-4 w-4 shrink-0"></i>',
+      'transferencia': '<i data-lucide="landmark" class="h-4 w-4 shrink-0"></i>',
+      'binance': BINANCE_ICON
+    };
+
+    const DELIVERY_METHODS = {
+      'pickup': 'Pickup',
+      'delivery': 'Delivery'
+    };
+
+    /* ---------- Estado ---------- */
+    const state = {
+      cart: [],            // [{ id, qty }]
+      filter: 'all',
+      customer: { name: '', delivery: 'pickup', payment: 'pagomovil', address: '' },
+      drawerOpen: false
+    };
+
+    /* ---------- Utilidades ---------- */
+    const $ = (sel, ctx = document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+
+    const money = (n) => '$' + Number(n).toFixed(2);
+
+    function escapeHTML(str) {
+      return String(str ?? '').replace(/[&<>"']/g, (c) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
+    }
+
+    function iconRefresh() {
+      if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons();
+    }
+
+    /** Placeholder SVG generado en runtime si la foto no existe o falta. */
+    function placeholderDataURI(name) {
+      const svg =
+        '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">' +
+        '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+        '<stop offset="0%" stop-color="#FFE4EF"/><stop offset="100%" stop-color="#F9A8D4"/>' +
+        '</linearGradient></defs>' +
+        '<rect width="800" height="800" fill="url(#g)"/>' +
+        '<circle cx="400" cy="360" r="165" fill="#F472B6" opacity="0.45"/>' +
+        '<circle cx="340" cy="320" r="18" fill="#FFF1F6" opacity="0.9"/>' +
+        '<circle cx="455" cy="330" r="14" fill="#FFF1F6" opacity="0.9"/>' +
+        '<circle cx="390" cy="420" r="16" fill="#FFF1F6" opacity="0.9"/>' +
+        '<text x="400" y="590" font-family="Plus Jakarta Sans, sans-serif" font-size="44" font-weight="800" fill="#BE185D" text-anchor="middle">' +
+        escapeHTML(name) +
+        '</text>' +
+        '</svg>';
+      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    function applyImageFallback(imgEl, name) {
+      const useFallback = () => {
+        if (imgEl.dataset.fallbackApplied) return;
+        imgEl.dataset.fallbackApplied = '1';
+        imgEl.src = placeholderDataURI(name);
+      };
+      imgEl.addEventListener('error', useFallback, { once: true });
+      // Si la imagen ya falló antes de enganchar el listener
+      if (imgEl.complete && imgEl.naturalWidth === 0) useFallback();
+    }
+
+    /* ==========================================================================
+       MOTOR DE PRECIOS Y PROMOCIONES 2x
+       - Por categoría se suman TODAS las unidades (sin importar el sabor).
+       - Cada par (Math.floor(unidades / 2)) cuesta el precio de par.
+       - El resto (unidades % 2) se cobra a precio unitario.
+       ========================================================================== */
+    function getQty(id) {
+      const item = state.cart.find((i) => i.id === id);
+      return item ? item.qty : 0;
+    }
+
+    function categoryStats() {
+      const stats = {};
+      Object.keys(CATEGORIES).forEach((key) => {
+        const cat = CATEGORIES[key];
+        const units = PRODUCTS
+          .filter((p) => p.cat === key)
+          .reduce((sum, p) => sum + getQty(p.id), 0);
+
+        const pairs = Math.floor(units / 2);
+        const singles = units % 2;
+        const total = pairs * cat.pair + singles * cat.unit;
+        const full = units * cat.unit;
+
+        stats[key] = {
+          units, pairs, singles, total,
+          fullPrice: full,
+          saving: full - total,
+          hasPromo: pairs > 0,
+          isOdd: units % 2 === 1,
+          needsOneMore: units % 2 === 1
+        };
+      });
+      return stats;
+    }
+
+    function getTotals() {
+      const stats = categoryStats();
+
+      // Subtotal sin promoción (precio unitario x unidades) y unidades totales
+      let subtotal = 0;
+      let count = 0;
+      state.cart.forEach((item) => {
+        const product = PRODUCTS.find((p) => p.id === item.id);
+        if (!product) return;
+        const cat = CATEGORIES[product.cat];
+        subtotal += cat.unit * item.qty;
+        count += item.qty;
+      });
+
+      const total = stats.especial.total + stats.clasica.total;
+      const discount = subtotal - total;
+
+      return { stats, subtotal, discount, total, count };
+    }
+
+    /* ==========================================================================
+       OPERACIONES DEL CARRITO
+       ========================================================================== */
+    function persist() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          cart: state.cart,
+          customer: state.customer
+        }));
+      } catch (e) { /* almacenamiento no disponible: se ignora silenciosamente */ }
+    }
+
+    function restore() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        if (Array.isArray(data.cart)) {
+          state.cart = data.cart
+            .filter((i) => i && PRODUCTS.some((p) => p.id === i.id))
+            .map((i) => ({ id: i.id, qty: Math.max(0, Math.min(99, Number(i.qty) || 0)) }))
+            .filter((i) => i.qty > 0);
+        }
+        if (data.customer && typeof data.customer === 'object') {
+          state.customer = Object.assign(state.customer, data.customer);
+        }
+      } catch (e) { /* datos corruptos: se ignora */ }
+    }
+
+    function setQty(id, qty) {
+      const item = state.cart.find((i) => i.id === id);
+      if (!item) {
+        if (qty > 0) state.cart.push({ id, qty });
+      } else {
+        item.qty = qty;
+        if (item.qty <= 0) state.cart = state.cart.filter((i) => i.id !== id);
+      }
+      persist();
+      render();
+    }
+
+    function changeQty(id, delta) {
+      const next = getQty(id) + delta;
+      if (next <= 0) {
+        setQty(id, 0);
+      } else {
+        setQty(id, Math.min(99, next));
+      }
+    }
+
+    function addToCart(id) {
+      const product = PRODUCTS.find((p) => p.id === id);
+      if (!product) return;
+      setQty(id, getQty(id) + 1);
+      toastAdded(product);
+    }
+
+    /* ==========================================================================
+       RENDER — Catálogo
+       ========================================================================== */
+    function productCard(product, index) {
+      const cat = CATEGORIES[product.cat];
+      const qty = getQty(product.id);
+      const imgSrc = encodeURI(product.img);
+
+      const control = qty > 0
+        ? `
+      <div class="flex items-center gap-2 rounded-full bg-brand-50 p-1 ring-1 ring-brand-200">
+        <button type="button" class="qty-btn" data-act="dec" data-id="${product.id}"
+          aria-label="Quitar una unidad de ${escapeHTML(product.name)}">−</button>
+        <span class="min-w-6 text-center font-display text-base font-black tabular-nums" aria-live="polite">${qty}</span>
+        <button type="button" class="qty-btn" data-act="inc" data-id="${product.id}"
+          aria-label="Agregar una unidad de ${escapeHTML(product.name)}">+</button>
+      </div>`
+        : `
+      <button type="button" data-act="add" data-id="${product.id}"
+        class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-400 to-brand-600 px-5 py-2.5 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:scale-95">
+        <i data-lucide="plus" class="h-4 w-4"></i> Agregar
+      </button>`;
+
+      const tags = product.tags.map((t) =>
+        `<span class="rounded-full bg-cream px-2.5 py-1 text-[11px] font-semibold text-choco/60 ring-1 ring-brand-100">${escapeHTML(t)}</span>`
+      ).join('');
+
+      return `
+    <article class="card-ring group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card ring-1 ring-brand-100 transition duration-300 hover:-translate-y-1.5 hover:shadow-soft-lg animate-fadeUp"
+      style="animation-delay:${index * 55}ms">
+      <div class="relative aspect-square overflow-hidden">
+        <img src="${imgSrc}" alt="${escapeHTML(product.name)}" loading="lazy"
+          class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110">
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-choco/35 via-transparent to-transparent opacity-80"></div>
+
+        ${product.popular ? '<span class="ribbon">★ Favorita</span>' : ''}
+        <span class="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-extrabold text-brand-600 shadow-sm backdrop-blur">
+          <i data-lucide="sparkles" class="h-3 w-3"></i> ${escapeHTML(product.badge)}
+        </span>
+
+        <span class="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-choco/80 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-200 backdrop-blur">
+          NY Style
+        </span>
+
+        <span class="absolute bottom-3 left-3 inline-flex items-center gap-1 rounded-full bg-brand-500 px-2.5 py-1 text-[11px] font-extrabold text-white shadow">
+          <i data-lucide="tag" class="h-3 w-3"></i> ${cat.pairLabel}
+        </span>
+      </div>
+
+      <div class="flex flex-1 flex-col p-5">
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="font-display text-lg font-black leading-tight tracking-tight">${escapeHTML(product.name)}</h3>
+          <span class="shrink-0 rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-brand-600">${cat.label}</span>
+        </div>
+
+        <p class="mt-2 flex-1 text-[13px] leading-relaxed text-choco/65">${escapeHTML(product.desc)}</p>
+
+        <div class="mt-3 flex flex-wrap gap-1.5">${tags}</div>
+
+        <div class="mt-5 flex items-end justify-between gap-3 border-t border-brand-50 pt-4">
+          <div>
+            <p class="font-display text-2xl font-black leading-none">${money(cat.unit)}<span class="ml-1 text-[11px] font-bold text-choco/40">/und</span></p>
+            <p class="mt-1 flex items-center gap-1.5 text-[11px] font-semibold text-choco/50">
+              2 por <strong class="text-brand-600">${money(cat.pair)}</strong>
+              <s class="text-choco/35">${money(cat.unit * 2)}</s>
+            </p>
+          </div>
+          ${control}
+        </div>
+      </div>
+    </article>`;
+    }
+
+    function renderGrid() {
+      const grid = $('#grid');
+      const list = PRODUCTS.filter((p) => state.filter === 'all' || p.cat === state.filter);
+
+      if (!list.length) {
+        grid.innerHTML = `<div class="col-span-full rounded-3xl border border-dashed border-brand-200 bg-white p-10 text-center text-choco/50">No hay productos en esta categoría.</div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(productCard).join('');
+      $$('img', grid).forEach((img) => {
+        const product = PRODUCTS.find((p) => encodeURI(p.img) === img.getAttribute('src'));
+        applyImageFallback(img, product ? product.name : 'Cookie');
+      });
+      iconRefresh();
+    }
+
+    function renderFilters() {
+      $$('.tab-btn').forEach((btn) => {
+        const active = btn.dataset.filter === state.filter;
+        btn.classList.toggle('text-white', active);
+        btn.classList.toggle('text-choco/60', !active);
+        btn.classList.toggle('hover:text-brand-600', !active);
+        btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      const counts = { all: PRODUCTS.length, especial: 0, clasica: 0 };
+      PRODUCTS.forEach((p) => { counts[p.cat]++; });
+      $$('[data-count]').forEach((el) => {
+        el.textContent = counts[el.dataset.count];
+      });
+
+      moveTabIndicator();
+    }
+
+    /** Posiciona el indicador deslizante sobre la pestaña activa. */
+    function moveTabIndicator() {
+      const filters = $('#filters');
+      const indicator = $('#tabIndicator');
+      const activeBtn = $('#filters .tab-btn[aria-selected="true"]');
+      if (!filters || !indicator || !activeBtn) return;
+
+      const containerRect = filters.getBoundingClientRect();
+      const btnRect = activeBtn.getBoundingClientRect();
+
+      indicator.style.width = btnRect.width + 'px';
+      indicator.style.transform = `translateX(${btnRect.left - containerRect.left + filters.scrollLeft}px)`;
+      indicator.style.opacity = '1';
+    }
+
+    /* ==========================================================================
+       RENDER — Drawer del carrito
+       ========================================================================== */
+    function cartItemRow(product, qty) {
+      const cat = CATEGORIES[product.cat];
+      return `
+    <div class="flex items-center gap-3 rounded-2xl bg-white p-3 shadow-card ring-1 ring-brand-100">
+      <img src="${encodeURI(product.img)}" alt="${escapeHTML(product.name)}" loading="lazy"
+        class="h-16 w-16 shrink-0 rounded-xl object-cover ring-1 ring-brand-100">
+      <div class="min-w-0 flex-1">
+        <p class="truncate font-display text-sm font-bold leading-tight">${escapeHTML(product.name)}</p>
+        <p class="mt-0.5 text-[11px] font-semibold text-choco/50">${money(cat.unit)} c/u · ${cat.pairLabel}</p>
+        <p class="mt-1 font-display text-sm font-black text-brand-600">${money(qty * cat.unit)}</p>
+      </div>
+      <div class="flex shrink-0 items-center gap-1">
+        <button type="button" class="qty-btn !h-8 !w-8" data-act="dec" data-id="${product.id}"
+          aria-label="Quitar una unidad de ${escapeHTML(product.name)}">−</button>
+        <span class="min-w-6 text-center text-sm font-extrabold tabular-nums">${qty}</span>
+        <button type="button" class="qty-btn !h-8 !w-8" data-act="inc" data-id="${product.id}"
+          aria-label="Agregar una unidad de ${escapeHTML(product.name)}">+</button>
+        <button type="button" class="grid h-8 w-8 place-items-center rounded-full bg-cream text-choco/40 transition hover:bg-brand-50 hover:text-brand-600"
+          data-act="remove" data-id="${product.id}" aria-label="Eliminar ${escapeHTML(product.name)} del carrito">
+          <i data-lucide="trash-2" class="h-4 w-4"></i>
+        </button>
+      </div>
+    </div>`;
+    }
+
+    function upsellBanner(key, stat) {
+      const cat = CATEGORIES[key];
+      if (!stat.needsOneMore) return '';
+      return `
+    <div class="flex items-start gap-3 rounded-2xl border border-dashed border-brand-300 bg-brand-50 p-3.5">
+      <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-500 text-white">
+        <i data-lucide="sparkles" class="h-4 w-4"></i>
+      </span>
+      <div class="min-w-0">
+        <p class="text-[13px] font-extrabold leading-snug text-brand-700">
+          ¡Agrega 1 galleta ${cat.label} más por solo ${money(cat.extra)} adicionales para activar la promo 2x!
+        </p>
+        <p class="mt-1 text-[11px] font-semibold text-choco/55">
+          Llevas ${stat.units} ${stat.units === 1 ? 'galleta' : 'galletas'} de ${cat.lineName}. Con una más te llevas la segunda a ${money(cat.pair - cat.unit)}.
+        </p>
+      </div>
+    </div>`;
+    }
+
+    function customerForm() {
+      const c = state.customer;
+      const isDelivery = c.delivery === 'delivery';
+
+      const payChips = Object.keys(PAYMENT_METHODS).map((key) => {
+        const active = c.payment === key;
+        return `<button type="button" data-payment="${key}" aria-pressed="${active}"
+      class="payment-chip flex items-center justify-center gap-1.5 rounded-xl border px-2 py-2.5 text-[12px] font-bold transition active:scale-95 ${active ? 'border-brand-400 bg-brand-50 text-brand-700 shadow-sm' : 'border-brand-100 bg-cream text-choco/60 hover:border-brand-300'}">
+      ${PAYMENT_ICONS[key] || ''}
+      <span class="truncate">${PAYMENT_METHODS[key]}</span>
+    </button>`;
+      }).join('');
+
+      return `
+    <section class="rounded-3xl bg-white p-4 shadow-card ring-1 ring-brand-100">
+      <h4 class="flex items-center gap-2 font-display text-sm font-black uppercase tracking-wide text-brand-600">
+        <i data-lucide="user-round" class="h-4 w-4"></i> Datos del pedido
+      </h4>
+
+      <div class="mt-3.5">
+        <label class="field-label" for="inputName">Nombre del cliente *</label>
+        <input id="inputName" type="text" class="field" placeholder="Ej: Maria N." value="${escapeHTML(c.name)}" autocomplete="name">
+      </div>
+
+      <fieldset class="mt-3.5">
+        <legend class="field-label">Método de entrega</legend>
+        <div class="grid grid-cols-2 gap-2" role="group" aria-label="Método de entrega">
+          <button type="button" data-delivery="pickup"
+            class="delivery-btn flex items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-bold transition ${c.delivery === 'pickup' ? 'border-brand-400 bg-brand-50 text-brand-700 shadow-sm' : 'border-brand-100 bg-cream text-choco/60 hover:border-brand-300'}">
+            <i data-lucide="store" class="h-4 w-4"></i> Pickup
+          </button>
+          <button type="button" data-delivery="delivery"
+            class="delivery-btn flex items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-bold transition ${c.delivery === 'delivery' ? 'border-brand-400 bg-brand-50 text-brand-700 shadow-sm' : 'border-brand-100 bg-cream text-choco/60 hover:border-brand-300'}">
+            <i data-lucide="bike" class="h-4 w-4"></i> Delivery
+          </button>
+        </div>
+      </fieldset>
+
+      <div id="addressWrap" class="mt-3.5 ${isDelivery ? '' : 'hidden'}">
+        <label class="field-label" for="inputAddress">Dirección (solo delivery)</label>
+        <textarea id="inputAddress" rows="2" class="field resize-none" placeholder="Calle, número, referencias...">${escapeHTML(c.address)}</textarea>
+      </div>
+
+      <fieldset class="mt-3.5">
+        <legend class="field-label">Método de pago</legend>
+        <div class="grid grid-cols-2 gap-2" role="group" aria-label="Método de pago">
+          ${payChips}
+        </div>
+      </fieldset>
+    </section>`;
+    }
+
+    function renderDrawer() {
+      const body = $('#cartBody');
+      const footer = $('#cartFooter');
+      const t = getTotals();
+      const items = state.cart.filter((i) => getQty(i.id) > 0);
+
+      // ---- Body ----
+      if (!items.length) {
+        body.innerHTML = `
+      <div class="flex flex-col items-center justify-center rounded-3xl border border-dashed border-brand-200 bg-white/60 px-6 py-14 text-center">
+        <span class="grid h-20 w-20 place-items-center rounded-full bg-brand-50 text-4xl">🍪</span>
+        <p class="mt-4 font-display text-lg font-black">Tu carrito está vacío</p>
+        <p class="mt-1 text-sm text-choco/55">Agrega tus galletas favoritas y la promo 2x se aplica sola.</p>
+        <button type="button" data-act="close-drawer" class="mt-5 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-400 to-brand-600 px-6 py-3 text-sm font-extrabold text-white shadow-soft transition hover:-translate-y-0.5">
+          <i data-lucide="cookie" class="h-4 w-4"></i> Ver el catálogo
+        </button>
+      </div>`;
+      } else {
+        const rows = items.map((item) => {
+          const product = PRODUCTS.find((p) => p.id === item.id);
+          return product ? cartItemRow(product, item.qty) : '';
+        }).join('');
+
+        body.innerHTML = `
+      <div class="space-y-2.5">${rows}</div>
+      ${upsellBanner('especial', t.stats.especial)}
+      ${upsellBanner('clasica', t.stats.clasica)}
+      ${customerForm()}`;
+      }
+
+      // ---- Footer ----
+      if (!items.length) {
+        footer.innerHTML = `
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-choco/55">Total</span>
+        <span class="font-display text-xl font-black">$0.00</span>
+      </div>`;
+      } else {
+        const promoRows = [];
+        if (t.stats.especial.hasPromo) {
+          promoRows.push(`
+        <div class="flex items-center justify-between rounded-xl bg-brand-50 px-3 py-2">
+          <span class="flex items-center gap-2 text-[12px] font-bold text-brand-700">
+            <i data-lucide="badge-percent" class="h-4 w-4"></i>
+            ${CATEGORIES.especial.promoText} · ${t.stats.especial.pairs} par${t.stats.especial.pairs > 1 ? 'es' : ''}
+          </span>
+          <span class="text-[12px] font-extrabold text-brand-700">−${money(t.stats.especial.saving)}</span>
+        </div>`);
+        }
+        if (t.stats.clasica.hasPromo) {
+          promoRows.push(`
+        <div class="flex items-center justify-between rounded-xl bg-brand-50 px-3 py-2">
+          <span class="flex items-center gap-2 text-[12px] font-bold text-brand-700">
+            <i data-lucide="badge-percent" class="h-4 w-4"></i>
+            ${CATEGORIES.clasica.promoText} · ${t.stats.clasica.pairs} par${t.stats.clasica.pairs > 1 ? 'es' : ''}
+          </span>
+          <span class="text-[12px] font-extrabold text-brand-700">−${money(t.stats.clasica.saving)}</span>
+        </div>`);
+        }
+
+        footer.innerHTML = `
+      <div class="space-y-2">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-choco/55">Subtotal (sin promo)</span>
+          <span class="font-semibold tabular-nums">${money(t.subtotal)}</span>
+        </div>
+        <div class="flex items-center justify-between text-sm">
+          <span class="flex items-center gap-1.5 font-semibold text-brand-600">
+            <i data-lucide="sparkles" class="h-4 w-4"></i> Descuento Promo 2x
+          </span>
+          <span class="font-extrabold tabular-nums text-brand-600">${t.discount > 0 ? '−' + money(t.discount) : money(0)}</span>
+        </div>
+        ${promoRows.join('')}
+        <div class="flex items-end justify-between border-t border-brand-100 pt-2.5">
+          <span class="font-display text-sm font-bold uppercase tracking-wide text-choco/70">Total a pagar</span>
+          <span class="font-display text-3xl font-black leading-none text-brand-600 tabular-nums">${money(t.total)}</span>
+        </div>
+        ${t.discount > 0 ? `<p class="text-right text-[11px] font-bold text-brand-500">¡Estás ahorrando ${money(t.discount)}! 🎉</p>` : ''}
+      </div>
+
+      <button type="button" id="btnWhatsapp"
+        class="shine mt-4 flex w-full items-center justify-center gap-2.5 rounded-full bg-[#25D366] px-6 py-4 text-sm font-extrabold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 active:scale-[.98]">
+        <i data-lucide="message-circle" class="h-5 w-5"></i>
+        Enviar Pedido por WhatsApp
+      </button>
+      <p class="mt-2 text-center text-[11px] text-choco/45">Te confirmaremos la entrega y el pago por WhatsApp.</p>`;
+      }
+
+      // ---- Contadores ----
+      $('#drawerSubtitle').textContent = t.count === 0
+        ? '0 galletas'
+        : `${t.count} ${t.count === 1 ? 'galleta' : 'galletas'}${t.discount > 0 ? ' · promo aplicada' : ''}`;
+      $('#btnClearCart').classList.toggle('hidden', !items.length);
+      $('#btnClearCart').classList.toggle('inline-flex', items.length > 0);
+
+      $('#badgeDesktop').textContent = t.count;
+      $('#badgeMobile').textContent = t.count;
+      $('#badgeDesktop').classList.toggle('scale-125', t.count > 0);
+
+      $('#barCount').textContent = t.count === 0
+        ? 'Tu carrito está vacío'
+        : `${t.count} ${t.count === 1 ? 'galleta' : 'galletas'}${t.discount > 0 ? ` · ahorras ${money(t.discount)}` : ''}`;
+      $('#barTotal').textContent = money(t.total);
+
+      const savingChip = $('#barSaving');
+      if (savingChip) {
+        const showSaving = t.discount > 0 && window.innerWidth >= 380;
+        savingChip.classList.toggle('hidden', !showSaving);
+        savingChip.classList.toggle('inline-flex', showSaving);
+        $('#barSavingValue').textContent = money(t.discount);
+      }
+
+      // Fallback de imágenes dentro del drawer
+      $$('img', body).forEach((img) => {
+        const product = PRODUCTS.find((p) => encodeURI(p.img) === img.getAttribute('src'));
+        applyImageFallback(img, product ? product.name : 'Cookie');
+      });
+
+      iconRefresh();
+    }
+
+    /* ---------- Barra flotante móvil ---------- */
+    function renderCartBar() {
+      const bar = $('#cartBar');
+      const t = getTotals();
+      const show = t.count > 0;
+      bar.classList.toggle('translate-y-full', !show);
+      bar.classList.toggle('translate-y-0', show);
+    }
+
+    /* ---------- Render global ---------- */
+    function render() {
+      renderFilters();
+      renderGrid();
+      renderDrawer();
+      renderCartBar();
+    }
+
+    /* ==========================================================================
+       DRAWER — apertura / cierre
+       ========================================================================== */
+    function openDrawer() {
+      state.drawerOpen = true;
+      const drawer = $('#cartDrawer');
+      const backdrop = $('#cartBackdrop');
+      drawer.classList.remove('translate-x-full');
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => $('#btnCloseDrawer').focus(), 120);
+    }
+
+    function closeDrawer() {
+      state.drawerOpen = false;
+      const drawer = $('#cartDrawer');
+      const backdrop = $('#cartBackdrop');
+      drawer.classList.add('translate-x-full');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    /* ==========================================================================
+       SWEETALERT2 — Toasts y validaciones
+       ========================================================================== */
+    function toastAdded(product) {
+      const qty = getQty(product.id);
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: `${qty} × ${product.name} en el carrito`,
+        showConfirmButton: false,
+        timer: 1600,
+        timerProgressBar: true,
+        customClass: {
+          popup: 'cookie-toast'
+        },
+        didOpen: (toast) => {
+          toast.style.animation = 'none';
+        }
+      });
+    }
+
+    async function confirmClearCart() {
+      const result = await Swal.fire({
+        title: '¿Vaciar el carrito?',
+        text: 'Se quitarán todas las galletas y los descuentos promo 2x.',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, vaciar',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true,
+        customClass: { popup: 'swal-popup', title: 'swal-title', confirmButton: 'swal-confirm', cancelButton: 'swal-cancel' }
+      });
+      if (result.isConfirmed) {
+        state.cart = [];
+        persist();
+        render();
+        Swal.fire({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          title: 'Carrito vaciado',
+          showConfirmButton: false,
+          timer: 1400,
+          customClass: { popup: 'cookie-toast' }
+        });
+      }
+    }
+
+    /* ==========================================================================
+       WHATSAPP — mensaje y envío
+       ========================================================================== */
+    function buildWhatsAppMessage() {
+      const t = getTotals();
+      const c = state.customer;
+      const items = state.cart.filter((i) => getQty(i.id) > 0);
+
+      const lines = [];
+      lines.push('🍪 *COOKIES ED — NUEVO PEDIDO* 🍪');
+      lines.push('━━━━━━━━━━━━━━━━━━');
+      lines.push('🧾 *Pedido:*');
+
+      items.forEach((item) => {
+        const product = PRODUCTS.find((p) => p.id === item.id);
+        if (!product) return;
+        const cat = CATEGORIES[product.cat];
+        lines.push(`• ${item.qty} x ${product.name} — ${money(cat.unit * item.qty)}`);
+      });
+
+      lines.push('━━━━━━━━━━━━━━━━━━');
+
+      const promos = [];
+      if (t.stats.especial.hasPromo) {
+        promos.push(`🎁 ${CATEGORIES.especial.promoText} (${CATEGORIES.especial.pairLabel}) — ${t.stats.especial.pairs} par${t.stats.especial.pairs > 1 ? 'es' : ''} — ahorro ${money(t.stats.especial.saving)}`);
+      }
+      if (t.stats.clasica.hasPromo) {
+        promos.push(`🎁 ${CATEGORIES.clasica.promoText} (${CATEGORIES.clasica.pairLabel}) — ${t.stats.clasica.pairs} par${t.stats.clasica.pairs > 1 ? 'es' : ''} — ahorro ${money(t.stats.clasica.saving)}`);
+      }
+
+      if (promos.length) {
+        lines.push('🎯 *Promociones 2x aplicadas:*');
+        promos.forEach((p) => lines.push(p));
+      } else {
+        lines.push('🎯 *Promociones 2x aplicadas:* ninguna (aún sin pares)');
+      }
+
+      lines.push('━━━━━━━━━━━━━━━━━━');
+      lines.push(`🧮 *Subtotal:* ${money(t.subtotal)}`);
+      lines.push(`🏷️ *Descuento promo:* ${t.discount > 0 ? '-' + money(t.discount) : money(0)}`);
+      lines.push(`💵 *TOTAL A PAGAR: ${money(t.total)} USD*`);
+      lines.push('━━━━━━━━━━━━━━━━━━');
+      lines.push(`👤 *Cliente:* ${c.name}`);
+      lines.push(`🛵 *Entrega:* ${DELIVERY_METHODS[c.delivery] || 'Pickup'}`);
+      if (c.delivery === 'delivery' && c.address) {
+        lines.push(`🏠 *Dirección:* ${c.address}`);
+      }
+      lines.push(`💳 *Método de pago:* ${PAYMENT_METHODS[c.payment] || 'Pago Móvil'}`);
+      lines.push('');
+      lines.push('¡Gracias por tu compra! 🙏');
+
+      return lines.join('\n');
+    }
+
+    async function sendOrderToWhatsApp() {
+      const t = getTotals();
+
+      // 1) Validar carrito vacío
+      if (t.count === 0) {
+        await Swal.fire({
+          icon: 'error',
+          title: 'Tu carrito está vacío',
+          text: 'Agrega al menos una galleta antes de enviar tu pedido.',
+          confirmButtonText: 'Ver catálogo',
+          customClass: { popup: 'swal-popup', title: 'swal-title', confirmButton: 'swal-confirm' }
+        }).then((r) => { if (r.isConfirmed) { closeDrawer(); document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' }); } });
+        return;
+      }
+
+      // 2) Validar / pedir el nombre del cliente
+      if (!state.customer.name.trim()) {
+        const result = await Swal.fire({
+          title: '¿Cómo te llamas?',
+          text: 'Necesitamos tu nombre para registrar el pedido.',
+          input: 'text',
+          inputPlaceholder: 'Ej: Maria N.',
+          inputAttributes: { 'aria-label': 'Nombre del cliente', maxlength: '60' },
+          showCancelButton: true,
+          confirmButtonText: 'Continuar',
+          cancelButtonText: 'Cancelar',
+          reverseButtons: true,
+          inputValidator: (value) => {
+            if (!value || !value.trim()) return 'Por favor escribe tu nombre';
+            return null;
+          },
+          customClass: { popup: 'swal-popup', title: 'swal-title', input: 'swal-input', confirmButton: 'swal-confirm', cancelButton: 'swal-cancel' }
+        });
+        if (!result.isConfirmed) return;
+        state.customer.name = String(result.value).trim();
+        persist();
+        renderDrawer();
+      }
+
+      // 3) Confirmación final con el resumen
+      const t2 = getTotals();
+      const confirm = await Swal.fire({
+        title: '¿Enviar tu pedido?',
+        html: `
+      <div class="swal-summary text-left">
+        <p class="mb-2 text-sm"><strong>${escapeHTML(state.customer.name)}</strong> · ${DELIVERY_METHODS[state.customer.delivery]} · ${PAYMENT_METHODS[state.customer.payment]}</p>
+        <p class="mb-1 text-xs uppercase tracking-wide text-choco/50">Total a pagar</p>
+        <p class="font-display text-3xl font-black text-brand-600">${money(t2.total)}</p>
+        ${t2.discount > 0 ? `<p class="mt-1 text-xs font-bold text-brand-500">Ahorro aplicado: ${money(t2.discount)} por promo 2x 🎉</p>` : ''}
+      </div>`,
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonText: 'Abrir WhatsApp',
+        cancelButtonText: 'Seguir editando',
+        reverseButtons: true,
+        customClass: { popup: 'swal-popup', title: 'swal-title', confirmButton: 'swal-confirm', cancelButton: 'swal-cancel' }
+      });
+      if (!confirm.isConfirmed) return;
+
+      // 4) Enlace de WhatsApp codificado
+      const message = buildWhatsAppMessage();
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+      const win = window.open(url, '_blank', 'noopener');
+      if (!win) {
+        window.location.href = url;
+      }
+    }
+
+    /* ==========================================================================
+       EVENTOS
+       ========================================================================== */
+    function bindEvents() {
+      // Carrito desde las tarjetas (delegación)
+      $('#grid').addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-act]');
+        if (!btn) return;
+        const id = btn.dataset.id;
+        const act = btn.dataset.act;
+        if (act === 'add') addToCart(id);
+        if (act === 'inc') changeQty(id, 1);
+        if (act === 'dec') changeQty(id, -1);
+        if (act === 'remove') setQty(id, 0);
+      });
+
+      // Carrito dentro del drawer (delegación)
+      $('#cartBody').addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-act]');
+        if (!btn) return;
+        if (btn.dataset.act === 'close-drawer') {
+          closeDrawer();
+          document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+        const id = btn.dataset.id;
+        const act = btn.dataset.act;
+        if (act === 'inc') changeQty(id, 1);
+        if (act === 'dec') changeQty(id, -1);
+        if (act === 'remove') {
+          const product = PRODUCTS.find((p) => p.id === id);
+          setQty(id, 0);
+          if (product) {
+            Swal.fire({
+              toast: true,
+              position: 'top-end',
+              icon: 'success',
+              title: `${product.name} eliminado`,
+              showConfirmButton: false,
+              timer: 1400,
+              customClass: { popup: 'cookie-toast' }
+            });
+          }
+        }
+      });
+
+      // Botones de entrega y método de pago (delegación)
+      $('#cartBody').addEventListener('click', (e) => {
+        const deliveryBtn = e.target.closest('[data-delivery]');
+        if (deliveryBtn) {
+          state.customer.delivery = deliveryBtn.dataset.delivery;
+          persist();
+          renderDrawer();
+          return;
+        }
+        const payBtn = e.target.closest('[data-payment]');
+        if (payBtn) {
+          state.customer.payment = payBtn.dataset.payment;
+          persist();
+          renderDrawer();
+        }
+      });
+
+      // Campos del mini formulario
+      $('#cartBody').addEventListener('input', (e) => {
+        if (e.target.id === 'inputName') {
+          state.customer.name = e.target.value;
+          persist();
+        }
+        if (e.target.id === 'inputAddress') {
+          state.customer.address = e.target.value;
+          persist();
+        }
+      });
+
+      $('#cartBody').addEventListener('change', () => { /* los chips de pago ya se guardan al hacer clic */ });
+
+      // Filtros
+      $('#filters').addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-filter]');
+        if (!btn) return;
+        state.filter = btn.dataset.filter;
+        renderFilters();
+        renderGrid();
+      });
+
+      // Apertura / cierre del drawer
+      $('#btnCartDesktop').addEventListener('click', openDrawer);
+      $('#btnCartMobile').addEventListener('click', openDrawer);
+      $('#btnCloseDrawer').addEventListener('click', closeDrawer);
+      $('#cartBackdrop').addEventListener('click', closeDrawer);
+      $('#btnClearCart').addEventListener('click', confirmClearCart);
+
+      // Envío por WhatsApp (delegación: el botón se re-renderiza)
+      $('#cartFooter').addEventListener('click', (e) => {
+        if (e.target.closest('#btnWhatsapp')) sendOrderToWhatsApp();
+      });
+
+      /* Tecla Escape cierra el drawer */
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && state.drawerOpen) closeDrawer();
+      });
+
+      // Indicador de pestañas: recalcular en resize / scroll horizontal
+      window.addEventListener('resize', moveTabIndicator);
+      $('#filters').addEventListener('scroll', moveTabIndicator, { passive: true });
+
+      // Si el ancho de las pestañas cambia (fuentes, zoom, rotación) se reposiciona
+      if (window.ResizeObserver) {
+        const ro = new ResizeObserver(() => moveTabIndicator());
+        $$('#filters .tab-btn').forEach((b) => ro.observe(b));
+        ro.observe($('#filters'));
+      }
+
+      // Sombra del header al hacer scroll
+      const onScroll = () => {
+        $('#siteHeader').classList.toggle('shadow-soft', window.scrollY > 8);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Swipe lateral para cerrar el drawer (móvil)
+      const drawerEl = $('#cartDrawer');
+      let touchStartX = 0, touchStartY = 0, dragX = 0;
+      drawerEl.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        dragX = 0;
+      }, { passive: true });
+      drawerEl.addEventListener('touchmove', (e) => {
+        const dx = e.touches[0].clientX - touchStartX;
+        const dy = e.touches[0].clientY - touchStartY;
+        if (Math.abs(dx) < Math.abs(dy) || dx <= 0) return; // scroll vertical o swipe a la izquierda
+        drawerEl.classList.add('dragging');
+        dragX = dx;
+        drawerEl.style.transform = `translateX(${dx * 0.55}px)`;
+      }, { passive: true });
+      drawerEl.addEventListener('touchend', () => {
+        drawerEl.classList.remove('dragging');
+        drawerEl.style.transform = '';
+        if (dragX > 80) closeDrawer();
+        dragX = 0;
+      });
+    }
+
+    /* ==========================================================================
+       INIT
+       ========================================================================== */
+    function init() {
+      restore();
+      bindEvents();
+      render();
+
+      $('#year').textContent = new Date().getFullYear();
+
+      // Red de seguridad: cualquier foto que no exista muestra un placeholder rosa
+      document.addEventListener('error', (e) => {
+        const el = e.target;
+        if (el && el.tagName === 'IMG' && !el.dataset.fallbackApplied) {
+          el.dataset.fallbackApplied = '1';
+          el.src = placeholderDataURI(el.alt || 'Cookie');
+        }
+      }, true);
+
+      // Fallback de la imagen del hero
+      const heroImg = $('#heroImg');
+      applyImageFallback(heroImg, 'Cookies ED');
+
+      iconRefresh();
+
+      // El indicador de pestañas se recalcula cuando las fuentes terminan de cargar
+      window.addEventListener('load', moveTabIndicator);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(moveTabIndicator).catch(() => { });
+      }
+      setTimeout(moveTabIndicator, 400);
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+
+</html>
